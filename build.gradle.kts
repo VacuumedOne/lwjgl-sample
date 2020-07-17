@@ -24,18 +24,10 @@ val lwjglNatives = when (OperatingSystem.current()) {
 }
 
 dependencies {
-    // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-
-    // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
-    // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-
-    // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
 
 	implementation("org.lwjgl", "lwjgl")
@@ -57,7 +49,6 @@ dependencies {
 }
 
 application {
-    // Define the main class for the application.
     mainClassName = "main.RendererKt"
 }
 
@@ -70,3 +61,11 @@ shadowJar.apply {
     }
     archiveName = "all.jar"
 }
+
+tasks.register("myrun") {
+    doLast {
+        
+    }
+    finalizedBy("run")
+}
+
