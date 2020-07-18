@@ -12,8 +12,7 @@ import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.opengl.GL11.*
 import org.lwjgl.opengl.GL20.GL_SHADING_LANGUAGE_VERSION
 
-import primitive.Triangle
-import primitive.LineLoop
+import primitive.*
 
 class Renderer {
 
@@ -42,7 +41,7 @@ class Renderer {
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE)
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE)
 
-        val window: Long? = glfwCreateWindow(800, 800, "Renderer", 0L, 0L)
+        val window: Long? = glfwCreateWindow(600, 600, "Renderer", 0L, 0L)
         check(window != null) { "Unable to initialize GLFW window" }
 
         glfwMakeContextCurrent(window)
@@ -54,8 +53,10 @@ class Renderer {
     }
 
     fun loop(window: Long) {
-        glClearColor(0f, 0f, 0f, 1f)
-        val obj = Triangle()
+        glClearColor(0.1f, 0.1f, 0.1f, 1f)
+        // glClearColor(0.9f, 0.9f, 0.9f, 1f)
+        val obj = Quad()
+        // val obj = Triangle()
 
         while( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
