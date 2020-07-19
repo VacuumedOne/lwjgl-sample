@@ -33,10 +33,7 @@ fun setProgram(vspath: String, fspath: String):Int {
 
     glUseProgram(program)
 
-    val err = glGetError()
-    if (err != GL_NO_ERROR) println("Error happens!")
-    if (err == GL_INVALID_VALUE) println("invalud value")
-    if (err == GL_INVALID_OPERATION) println("invalud operation")
+    checkError()
 
     return program
 }

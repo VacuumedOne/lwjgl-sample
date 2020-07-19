@@ -54,13 +54,16 @@ class Renderer {
 
     fun loop(window: Long) {
         glClearColor(0.1f, 0.1f, 0.1f, 1f)
+        glEnable(GL_CULL_FACE)
+        glEnable(GL_DEPTH_TEST)
+        glDepthFunc(GL_LEQUAL)
         // glClearColor(0.9f, 0.9f, 0.9f, 1f)
-        val obj = Quad()
+        val obj = Sphere()
         // val obj = Triangle()
 
         while( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
-            glDisable(GL_CULL_FACE)
+            // glDisable(GL_CULL_FACE)
 
             // draw
             obj.draw()
